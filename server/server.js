@@ -4,6 +4,7 @@ import userRoute from './Routes/UserRoutes.js'
 import dotenv from 'dotenv';
 import { notFound, errorHandler } from './middleware/ErrorMiddleware.js';
 import connectDB from './Config/db.js'
+import bodyParser from 'body-parser';
 
 connectDB();
 
@@ -12,10 +13,13 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
-app.use('/api/users', userRoute)
 
+app.use(bodyParser.json());
+app.use('/api/users', userRoute)
+app.use(express.json());
+app.use(express.urlencoded({extened: true}))
 app.use('/', (req, res) =>{
-    res.send('server is ready')
+    res.send('server is ready') 
 })
 
 app.use(notFound)
