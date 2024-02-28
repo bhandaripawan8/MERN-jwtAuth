@@ -2,10 +2,9 @@
 import express from 'express';
 import userRoute from './Routes/UserRoutes.js'
 import dotenv from 'dotenv';
-// import { notFound, errorHandler } from './middleware/ErrorMiddleware.js';
 import connectDB from './Config/db.js'
 import bodyParser from 'body-parser';
-import bcrypt from 'bcrypt';
+
 
 connectDB();
 
